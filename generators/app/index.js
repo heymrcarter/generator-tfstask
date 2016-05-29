@@ -1,5 +1,6 @@
 var generators = require('yeoman-generator');
 var yosay = require('yosay');
+var mkdir = require('mkdirp');
 
 module.exports = generators.Base.extend({
     constructor: function () {
@@ -79,6 +80,9 @@ module.exports = generators.Base.extend({
                     taskname: this.friendlyName,
                     description: this.description
                 });
+        },
+        taskDir: function () {
+            mkdir(this.taskname);
         }
     }
 });
