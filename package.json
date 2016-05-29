@@ -1,0 +1,27 @@
+{
+  "name": "generator-tfstask",
+  "version": "0.1.0",
+  "description": "A Yeoman generator to create custom TFS of VSTS build or release tasks",
+  "scripts": {
+    "test": "node_modules/.bin/mocha tests/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heymrcarter/generator-tfstask.git"
+  },
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "author": "Tom Carter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/heymrcarter/generator-tfstask/issues"
+  },
+  "homepage": "https://github.com/heymrcarter/generator-tfstask#readme",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "guid": "0.0.12",
+    "yeoman-generator": "^0.21.2",
+    "yosay": "^1.1.1"
+  }
+}
