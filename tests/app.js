@@ -52,4 +52,10 @@ describe('tfstask:app', function () {
     it('Should add a default task icon', function () {
         assert.file(path.join(prompts.taskname, 'icon.png')); 
     });
+    
+    it('Should create a starter PowerShell script', function () {
+        var script = path.join(prompts.taskname, prompts.taskname + '.ps1');
+        
+        assert.file(script); 
+    });
 });

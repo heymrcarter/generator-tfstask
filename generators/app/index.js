@@ -105,6 +105,12 @@ module.exports = generators.Base.extend({
                 this.templatePath('_icon.png'),
                 this.destinationPath(path.join(this.taskname, 'icon.png'))
             );  
+        },
+        script: function () {
+            this.fs.copy(
+                this.templatePath('_script.ps1'),
+                this.destinationPath(path.join(this.taskname, this.taskname + '.ps1'))
+            );
         }
     }
 });
