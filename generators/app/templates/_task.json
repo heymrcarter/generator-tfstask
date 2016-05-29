@@ -1,0 +1,18 @@
+{
+    "id": "<%= id %>",
+    "name": "<%= taskname %>",
+    "friendlyName": "<%= friendlyName %>",
+    "description": "<%= taskDescription %>",
+    "category": "<%= category %>",
+    "author": "<%= author %>",
+    "groups": [],
+    "inputs": [],
+    "instanceNameFormat": "",
+    "execution": {
+        "PowerShell": {
+            "target": "$(currentDirectory)\\<%= taskname %>.ps1",
+            "argumentFormat": "",
+            "workingDirectory": "$(currentDirectory)"
+        }
+    }
+}

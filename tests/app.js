@@ -6,7 +6,9 @@ describe('tfstask:app', function () {
     var prompts = {
         taskname: 'TestTask',
         friendlyname: 'test task',
-        description: 'Test description'
+        taskdescription: 'Test description',
+        category: 'Test',
+        author: 'Test Author'
     };
     
     before(function (done) {
@@ -23,5 +25,27 @@ describe('tfstask:app', function () {
     
     it('Should create a directory with the task name', function () {
         assert.file(prompts.taskname); 
+    });
+    
+    it('Should create a task.json file', function () {
+       assert.file(path.join(prompts.taskname, 'task.json')); 
+    });
+    
+    it('Should assign a guid for the task.json id', function () {
+        assert.fileContent(
+            path.join(prompts.taskname, 'task.json'),
+            /[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}/
+        );
+    });
+    
+    it('Should assign the user answers to their respective task.json fields', function () {
+        var taskJson = path.join(prompts.taskname, 'task.json');
+        
+        assert.jsonFileContent(taskJson, {name: prompts.taskname});
+        assert.jsonFileContent(taskJson, {friendlyName: prompts.friendlyname});
+        assert.jsonFileContent(taskJson, {description: prompts.taskdescription});
+        assert.jsonFileContent(taskJson, {category: prompts.category});
+        assert.jsonFileContent(taskJson, {author: prompts.author});
+        assert.fileContent(taskJson, /[$(]{1}currentDirectory[)]{1}[\\]+TestTask.ps1/);
     });
 });

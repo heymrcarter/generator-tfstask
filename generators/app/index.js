@@ -1,6 +1,8 @@
 var generators = require('yeoman-generator');
 var yosay = require('yosay');
 var mkdir = require('mkdirp');
+var path = require('path');
+var guid = require('guid');
 
 module.exports = generators.Base.extend({
     constructor: function () {
@@ -24,7 +26,7 @@ module.exports = generators.Base.extend({
                 default: this.appname
             },
             {
-                name: 'description',
+                name: 'taskdescription',
                 message: 'What does your task do?'
             },
             {
@@ -63,7 +65,7 @@ module.exports = generators.Base.extend({
         this.prompt(prompts, function (answers) {
             this.taskname = answers.taskname;
             this.friendlyName = answers.friendlyname;
-            this.description = answers.description;
+            this.taskDescription = answers.taskdescription;
             this.category = answers.category;
             this.author = answers.author;
             
@@ -78,11 +80,25 @@ module.exports = generators.Base.extend({
                 this.destinationPath('README.md'),
                 {
                     taskname: this.friendlyName,
-                    description: this.description
+                    description: this.taskDescription
                 });
         },
         taskDir: function () {
             mkdir(this.taskname);
+        },
+        taskJson: function () {
+            this.fs.copyTpl(
+                this.templatePath('_task.json'),
+                this.destinationPath(path.join(this.taskname, 'task.json')),
+                {
+                    id: guid.raw(),
+                    taskname: this.taskname,
+                    friendlyName: this.friendlyName,
+                    taskDescription: this.taskDescription,
+                    category: this.category,
+                    author: this.author
+                }
+            );
         }
     }
 });
