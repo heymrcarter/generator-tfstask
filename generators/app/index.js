@@ -99,6 +99,12 @@ module.exports = generators.Base.extend({
                     author: this.author
                 }
             );
+        },
+        icon: function () {
+            this.fs.copy(
+                this.templatePath('_icon.png'),
+                this.destinationPath(path.join(this.taskname, 'icon.png'))
+            );  
         }
     }
 });

@@ -48,4 +48,8 @@ describe('tfstask:app', function () {
         assert.jsonFileContent(taskJson, {author: prompts.author});
         assert.fileContent(taskJson, /[$(]{1}currentDirectory[)]{1}[\\]+TestTask.ps1/);
     });
+    
+    it('Should add a default task icon', function () {
+        assert.file(path.join(prompts.taskname, 'icon.png')); 
+    });
 });
