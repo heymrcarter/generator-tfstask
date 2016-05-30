@@ -27,3 +27,6 @@ Follow the prompts to provide the specifics about your task. When the generator 
     |   +-- icon.png
     |   +-- task.json
     |   +-- TaskName.ps1
+    
+##License
+[MIT](https://opensource.org/licenses/MIT)
