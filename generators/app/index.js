@@ -120,6 +120,13 @@ module.exports = generators.Base.extend({
                     taskname: this.taskname
                 }  
             );
+        },
+        gitignore: function () {
+            this.fs.copyTpl(
+                this.templatePath('_.gitignore'),
+                this.destinationPath('.gitignore'),
+                {}
+            );   
         }
     }
 });

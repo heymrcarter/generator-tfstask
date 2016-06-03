@@ -63,4 +63,8 @@ describe('tfstask:app', function () {
         assert.file('.tfstaskrc');
         assert.jsonFileContent('.tfstaskrc', {taskDir: prompts.taskname}); 
     });
+    
+    it('Should create the .gitignore', function () {
+        assert.file('.gitignore'); 
+    });
 });
