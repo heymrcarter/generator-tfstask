@@ -58,4 +58,9 @@ describe('tfstask:app', function () {
         
         assert.file(script); 
     });
+    
+    it('Should create the .tfstaskrc file and set the taskDir', function () {
+        assert.file('.tfstaskrc');
+        assert.jsonFileContent('.tfstaskrc', {taskDir: prompts.taskname}); 
+    });
 });

@@ -111,6 +111,15 @@ module.exports = generators.Base.extend({
                 this.templatePath('_script.ps1'),
                 this.destinationPath(path.join(this.taskname, this.taskname + '.ps1'))
             );
+        },
+        tfstaskrc: function () {
+            this.fs.copyTpl(
+                this.templatePath('_.tfstaskrc'),
+                this.destinationPath('.tfstaskrc'),
+                {
+                    taskname: this.taskname
+                }  
+            );
         }
     }
 });
