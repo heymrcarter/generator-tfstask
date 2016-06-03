@@ -28,5 +28,10 @@ Follow the prompts to provide the specifics about your task. When the generator 
     |   +-- task.json
     |   +-- TaskName.ps1
     
+###Adding a group
+You can use the group subgenerator to create a new group and add it to the groups array in your task.json. Run the following from your project root:
+
+    yo tfstask:group
+ 
 ##License
 [MIT](https://opensource.org/licenses/MIT)
