@@ -1,6 +1,5 @@
 var generators = require('yeoman-generator');
 var path = require('path');
-var glob = require('glob');
 var jsonfile = require('jsonfile');
 var fs = require('fs');
 
