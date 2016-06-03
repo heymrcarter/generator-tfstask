@@ -2,7 +2,7 @@ var generators = require('yeoman-generator');
 var yosay = require('yosay');
 var mkdir = require('mkdirp');
 var path = require('path');
-var guid = require('guid');
+var uuid = require('node-uuid');
 
 module.exports = generators.Base.extend({
     constructor: function () {
@@ -91,7 +91,7 @@ module.exports = generators.Base.extend({
                 this.templatePath('_task.json'),
                 this.destinationPath(path.join(this.taskname, 'task.json')),
                 {
-                    id: guid.raw(),
+                    id: uuid.v4(),
                     taskname: this.taskname,
                     friendlyName: this.friendlyName,
                     taskDescription: this.taskDescription,
