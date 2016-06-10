@@ -32,6 +32,11 @@ Follow the prompts to provide the specifics about your task. When the generator 
 You can use the group subgenerator to create a new group and add it to the groups array in your task.json. Run the following from your project root:
 
     yo tfstask:group
+
+###Adding an input
+You can use the input subgenerator to create a new input and add it to the input array in your task.json. Run the following from your project rot:
+
+    yo tfstask:input
  
 ##License
 [MIT](https://opensource.org/licenses/MIT)
