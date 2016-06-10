@@ -1,6 +1,6 @@
 {
   "name": "generator-tfstask",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "A Yeoman generator to create custom TFS or VSTS build or release tasks",
   "scripts": {
     "test": "node_modules/.bin/mocha tests/"
