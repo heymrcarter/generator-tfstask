@@ -15,9 +15,15 @@ To install this generator, run the following:
     npm install -g generator-tfstask
     
 ###Scaffolding a new task
-When you are ready to create a new task, create the root directory for your project and navigate to it in a terminal. Run the following to start the generator:
+When you are ready to create a new task, create the root directory for your project and navigate to it in a terminal.
+
+This generator can scaffold a new PowerShell based, or a Node.js based, task. To scaffold a PowerShell based task, use:
 
     yo tfstask
+
+And for Node.js based tasks simply add the `--node` or `-n` flag:
+
+    yo tasktask --node
     
 Follow the prompts to provide the specifics about your task. When the generator is finished it will have created the following in the project root:
 
