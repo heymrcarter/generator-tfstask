@@ -1,0 +1,23 @@
+{
+    "id": "<%= id %>",
+    "name": "<%= taskname %>",
+    "friendlyName": "<%= friendlyName %>",
+    "description": "<%= taskDescription %>",
+    "category": "<%= category %>",
+    "author": "<%= author %>",
+    "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0  
+    },
+    "groups": [],
+    "inputs": [],
+    "instanceNameFormat": "",
+    "execution": {
+        "Node": {
+            "target": "$(currentDirectory)\\<%= taskname %>.js",
+            "argumentFormat": "",
+            "workingDirectory": "$(currentDirectory)"
+        }
+    }
+}

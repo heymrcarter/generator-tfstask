@@ -7,6 +7,12 @@ var uuid = require('node-uuid');
 module.exports = generators.Base.extend({
     constructor: function () {
         generators.Base.apply(this, arguments);
+
+        this.node = this.option('node', {
+            desc: 'Tells Yeoman to scaffold a Node.js based TFS task, rather than PowerShell',
+            alias: 'n',
+            type: Boolean
+        });
     },
     
     prompting: function () {
@@ -58,7 +64,8 @@ module.exports = generators.Base.extend({
             },
             {
                 name: 'author',
-                message: 'Who is the author?'
+                message: 'Who is the author?',
+                store: true
             }
         ];
         
@@ -87,18 +94,33 @@ module.exports = generators.Base.extend({
             mkdir(this.taskname);
         },
         taskJson: function () {
-            this.fs.copyTpl(
-                this.templatePath('_task.json'),
-                this.destinationPath(path.join(this.taskname, 'task.json')),
-                {
-                    id: uuid.v4(),
-                    taskname: this.taskname,
-                    friendlyName: this.friendlyName,
-                    taskDescription: this.taskDescription,
-                    category: this.category,
-                    author: this.author
-                }
-            );
+            if (this.options['node']) {
+                this.fs.copyTpl(
+                    this.templatePath('_node.json'),
+                    this.destinationPath(path.join(this.taskname, 'task.json')),
+                    {
+                        id: uuid.v4(),
+                        taskname: this.taskname,
+                        friendlyName: this.friendlyName,
+                        taskDescription: this.taskDescription,
+                        category: this.category,
+                        author: this.author
+                    }
+                );
+            } else {
+                this.fs.copyTpl(
+                    this.templatePath('_powershell.json'),
+                    this.destinationPath(path.join(this.taskname, 'task.json')),
+                    {
+                        id: uuid.v4(),
+                        taskname: this.taskname,
+                        friendlyName: this.friendlyName,
+                        taskDescription: this.taskDescription,
+                        category: this.category,
+                        author: this.author
+                    }
+                );
+            }
         },
         icon: function () {
             this.fs.copy(
@@ -107,10 +129,17 @@ module.exports = generators.Base.extend({
             );  
         },
         script: function () {
-            this.fs.copy(
-                this.templatePath('_script.ps1'),
-                this.destinationPath(path.join(this.taskname, this.taskname + '.ps1'))
-            );
+            if (this.options['node']) {
+                this.fs.copy(
+                    this.templatePath('_script.js'),
+                    this.destinationPath(path.join(this.taskname, this.taskname + '.js'))
+                );
+            } else {
+                this.fs.copy(
+                    this.templatePath('_script.ps1'),
+                    this.destinationPath(path.join(this.taskname, this.taskname + '.ps1'))
+                );
+            }
         },
         tfstaskrc: function () {
             this.fs.copyTpl(
