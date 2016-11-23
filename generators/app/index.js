@@ -2,7 +2,7 @@ var generators = require('yeoman-generator');
 var yosay = require('yosay');
 var mkdir = require('mkdirp');
 var path = require('path');
-var uuid = require('node-uuid');
+var uuid = require('uuid');
 
 module.exports = generators.Base.extend({
     constructor: function () {
